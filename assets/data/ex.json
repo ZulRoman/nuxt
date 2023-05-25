@@ -1,0 +1,18 @@
+
+[
+    {
+      "id": 1,
+      "name": "Logements",
+      "image": "img/ex1.png"
+    },
+    {
+      "id": 2,
+      "name": "Experiences",
+      "image": "img/ex2.png"
+    },
+    {
+      "id": 3,
+      "name": "Adventures",
+      "image": "img/ex3.png"
+      }
+  ]
