@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="">
-      <section class="min-h-screen flex items-center bg-[url(/img/bga.png)] md:bg-fixed">
+      <section class="min-h-screen flex items-center bg-[url(https://media.istockphoto.com/id/1253643918/id/foto/malam-miami.jpg?s=612x612&w=0&k=20&c=YwyZs4ukT_8uA0gq2MV4Hm5k5Ns9H8k4bytrZqKB_v8=)] md:bg-fixed bg-cover">
         <div class="max-w-sm rounded overflow-hidden shadow-lg ml-10 bg-white">
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">Rencanakan Perjalanan Anda Sekarang.</div>
