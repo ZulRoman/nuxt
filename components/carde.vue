@@ -1,5 +1,5 @@
 <template>
-<section class="mx-7">
+<section class="">
     <div class="flex flex-col gap-5 text-slate-700 mt-16 mb-40">
         <div>
             <h1 class="text-xl font-bold">Destinations Airbnb Plus à la Une</h1>

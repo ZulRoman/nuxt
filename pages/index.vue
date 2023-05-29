@@ -1,8 +1,8 @@
 <template>
   <div>
     <main class="">
-      <section class="min-h-screen flex items-center bg-[url(/img/bga.png)] md:bg-fixed bg-cover">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg ml-10 bg-white">
+      <section class="min-h-screen flex items-center bg-[url(/img/bga.png)] md:bg-fixed bg-cover h-[750px]">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg ml-[80px] bg-white">
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">Rencanakan Perjalanan Anda Sekarang.</div>
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -39,17 +39,17 @@
   </div>
 </div>
       </section>
+      <div class="mx-[80px]">
 <Carda/>
-<section class="mx-7">
+<section class="">
   <div>
-                <h2 class="font-bold text-4xl my-6">Hébergements Airbnb Plus</h2>
-                <span>Une sélection de logements vérifiés selon des critères de qualité et de design</span>
+    <div>
+            <h1 class="text-xl font-bold">Hébergements Airbnb Plus</h1>
+            <p class="font-light mb-[24px]">Une sélection de logements vérifiés selon des critères de qualité et de design</p>
+        </div>
 <div
   class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center"
   style="background-image: url('/img/g1.png'); height: 400px">
-  <div
-    class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
-    style="background-color: rgba(0, 0, 0, 0.6)">
     <div class="flex h-full items-center justify-center">
       <div class="text-white">
         <img src="/img/j1.png" class="ml-20 mb-4">
@@ -62,7 +62,6 @@
         </button>
       </div>
     </div>
-  </div>
 </div>
 
               </div> 
@@ -76,10 +75,7 @@
 
  <Carde/>
 
-
-<p class="text-white">
-  Airbnb adalah jaringan pasar daring dan penginapan rumahan sejawat yang memungkinkan pengguna mendaftarkan atau menyewa properti untuk digunakan dalam jangka pendek. Harga sewanya ditetapkan oleh pemilik properti. Airbnb menerima sebagian tarif jasa pembukuan dari tamu dan tuan rumah.
-          </p>
+</div>
     </main>
   </div>
   </template>
