@@ -9,7 +9,7 @@
                     <div class="bg-white w-[290px] h-full" v-for="item in ex.c" :key="item.id">
                         <div class="w-full md:w-[289px]">
         <div class="w-[289px] h-[200px] overflow-hidden">
-            <img class="w-full rounded-[4px] hover:scale-110" :src="item.image" :alt="alt">
+            <img class="w-full rounded-[4px] hover:scale-110 duration-1000" :src="item.image" :alt="alt">
         </div>        
         <div class="flex flex-row justify-between items-center mt-2">
             <div class="flex flex-row items-center gap-3">

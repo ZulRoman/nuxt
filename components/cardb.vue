@@ -6,7 +6,7 @@
             <p class="font-light">Voyages de plusieurs jours organisés par des experts locaux avec activités, repas et logements compris</p>
         </div>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-8">
-                    <div class="bg-white w-[188px] h-full hover:scale-110" v-for="item in ex.b" :key="item.id">
+                    <div class="bg-white w-[188px] h-full hover:scale-110 duration-1000" v-for="item in ex.b" :key="item.id">
                             <div>
                                 <div>
                                     <img :src="item.image" alt="" class="w-[188px] h-[240px] object-cover object-top">
