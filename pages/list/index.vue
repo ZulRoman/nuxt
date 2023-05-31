@@ -1,5 +1,6 @@
 <script setup>
 const { data: ex } = await useFetch('https://dummyjson.com/products')
+const { data: ec } = await useFetch('https://dummyjson.com/products/categories?limit=6')
 </script>
 
 <template>
@@ -40,4 +41,6 @@ const { data: ex } = await useFetch('https://dummyjson.com/products')
                   </div> 
     </section>   
     </template>
+
+    
     

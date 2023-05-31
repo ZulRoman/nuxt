@@ -12,7 +12,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 </button>
             </NuxtLink>
                                 <div class="grid grid-cols-3 gap-3 gap-y-8">
-                                    <div v-for="(image, index) in ex.images" :key="index" class="">
+                                    <div v-for="(image, index) in ex.images" :key="index">
                                         <img :src="image" class="object-cover object-top hover:scale-110 duration-1000 flex">
                                     </div>
                                 </div>
@@ -37,5 +37,10 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         </div>
                                     </div>  
                         </div>
+            <NuxtLink :to="'co/' + ex.id">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 my-[80px]">
+                Beli
+                </button>
+            </NuxtLink>
     </section>   
     </template>
