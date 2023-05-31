@@ -70,7 +70,7 @@ function total() {
       <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Alamat" cols="35" rows="15"></textarea>
     </div>
     <div class="mt-4 ml-4">
-        <p class="text-4xl text-start text-[#484848] font-bold">Stock : {{ ex.stock }}</p>
+        <p class="text-4xl text-start text-[#484848] border border-black px-2 py-2 font-bold">Stock : {{ ex.stock }}</p>
         <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">
         Total Harga
       </label>
