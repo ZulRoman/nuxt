@@ -1,18 +1,21 @@
 <script setup>
-const { data: ex } = await useFetch('https://dummyjson.com/products')
-const { data: ec } = await useFetch('https://dummyjson.com/products/categories?limit=6')
+const { category } = useRoute().params;
+const { data: ex } = await useFetch('https://dummyjson.com/products/category/' + category)
 </script>
 
 <template>
     <section class="my-[88px]">
         <Cat/>
-      <div class="mx-[80px] my-[88px]">
-        <div class="flex justify-center mb-4 mt-[44px] text-4xl font-bold">
-            <h1>Product Lists</h1>
-        </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-8">
+      <div class="mx-[80px] my-[44px]">
+        <NuxtLink to="/list">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[40px]">
+                Kembali
+                </button>
+            </NuxtLink>
+            <h1 class="mb-[40px] flex justify-center items-center text-4xl font-bold">{{ category }}</h1>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 gap-y-8">
                         <div class="bg-white w-[188px] h-full hover:scale-110 duration-1000" v-for="item in ex.products" :key="item.id">
-                            <NuxtLink :to="'list/' + item.id">
+                            <NuxtLink :to="'/list/' + item.id">
                                 <div>
                                     <div>
                                         <img :src="item.thumbnail" alt="" class="w-[188px] h-[240px] object-cover object-top">
@@ -36,8 +39,5 @@ const { data: ec } = await useFetch('https://dummyjson.com/products/categories?l
                         </div>
                     </div>
                   </div> 
-    </section>   
-    </template>
-
-    
-    
+    </section> 
+</template>

@@ -6,14 +6,14 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
 <template>
     <section class="my-[88px] mx-[80px]">
       <div>
-        <NuxtLink to="/">
+        <NuxtLink onclick="window.history.go(-1); return false;">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[80px]">
                 Kembali
                 </button>
             </NuxtLink>
-                                <div class="grid grid-cols-3 gap-3 gap-y-8">
+                                <div class="grid grid-cols-3 gap-5 gap-y-8">
                                     <div v-for="(image, index) in ex.images" :key="index">
-                                        <img :src="image" class="object-cover object-top hover:scale-110 duration-1000 flex">
+                                        <img :src="image" class="object-cover object-top hover:scale-110 duration-1000 flex h-[200px] w-[350px] rounded">
                                     </div>
                                 </div>
                                 <div>
