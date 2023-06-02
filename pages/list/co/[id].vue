@@ -30,7 +30,7 @@ function krg() {
             </NuxtLink>
                         <div class="px-6 py-4">
     <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 flex">
-      <div class="grid lg:grid-cols-3 sm:grid-cols-1 sm:content-center">
+      <div class="grid lg:grid-cols-3 sm:grid-cols-1">
         <div class="w-[188px]">
                                 <div>
                                     <div>
@@ -53,7 +53,7 @@ function krg() {
                                     </div>
                                 </div> 
                               </div>
-    <div class="mb-4 ml-4">
+    <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Nama Pemesan
       </label>

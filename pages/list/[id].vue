@@ -7,11 +7,11 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
     <section class="my-[88px]">
       <div>
         <NuxtLink onclick="window.history.go(-1); return false;">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[40px] mt-2">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[40px] mt-4">
                 Kembali
                 </button>
             </NuxtLink>
-            <div class="grid lg:grid-cols-2 sm:grid-cols-1 content-start">
+            <div class="grid lg:grid-cols-2 sm:grid-cols-1 content-start gap-y-2 ">
                 <Swiper class="groupSwiper w-[492px] h-[450px]"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
@@ -33,7 +33,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="ml-4 w-[853px]">
+                                <div class="w-[492px] h-[450px]">
                                         <div>
                                             <h2 class="text-6xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>

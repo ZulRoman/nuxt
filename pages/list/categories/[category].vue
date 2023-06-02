@@ -12,7 +12,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/category/' +
                 Kembali
                 </button>
             </NuxtLink>
-            <h1 class="mb-[40px] flex justify-center items-center text-4xl font-bold">{{ category.toUpperCase().split('-').join(' ')  }}</h1>
+            <h1 class="mb-2 flex justify-center items-center text-4xl font-bold">{{ category.toUpperCase().split('-').join(' ')  }}</h1>
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 gap-y-8">
                         <div class="bg-white w-[188px] h-full hover:scale-110 duration-1000" v-for="item in ex.products" :key="item.id">
                             <NuxtLink :to="'list/' + item.id">
