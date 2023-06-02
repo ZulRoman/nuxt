@@ -12,7 +12,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 </button>
             </NuxtLink>
             <div class="grid lg:grid-cols-2 sm:grid-cols-1 content-start gap-y-2 ">
-                <Swiper class="groupSwiper w-[480px] h-[450px]"
+                <Swiper class="groupSwiper w-[450px] h-[450px]"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
@@ -29,11 +29,11 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                     >
                     <SwiperSlide v-for="image in ex.images" class="">
                         <NuxtLink :to="'/list/' + ex.id">
-                            <img :src="image" alt="" class="w-[480px] h-[450px] object-cover aspect-square duration-1000 rounded-lg">
+                            <img :src="image" alt="" class="w-[450px] h-[450px] object-cover aspect-square duration-1000 rounded-lg">
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="w-[480px] h-[450px]">
+                                <div class="w-[450px] h-[450px] px-2">
                                         <div>
                                             <h2 class="text-6xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
@@ -59,7 +59,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         </NuxtLink>
                                     </div>  
                         </div>
-                        <p class="text-4xl text-start text-[#484848] font-bold mt-2">Description</p>
+                        <div class="px-2">
+                        <p class="text-4xl text-start text-[#484848] font-bold mt-4">Description</p>
                         <div class="w-25">                            
 Processor :  Snapdragon 695 5G
 RAM : 8 GB + 8 GB Extended RAM
@@ -74,6 +75,7 @@ Display Size : 6.64"
 Screen : IPS LCD
 Refresh Rate : 120Hz
 NFC : Yes
+</div>
 </div>
                     </div>
     </section>   
