@@ -22,7 +22,7 @@ function krg() {
 </script>
 
 <template>
-    <section class="my-[88px] mx-[80px]">
+    <section class="my-[88px]">
         <NuxtLink onclick="window.history.go(-1); return false;">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[80px]">
                 Kembali
@@ -30,12 +30,12 @@ function krg() {
             </NuxtLink>
                         <div class="px-6 py-4">
     <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 flex">
+      <div class="grid lg:grid-cols-3 sm:grid-cols-1 sm:content-center">
         <div class="w-[188px]">
                                 <div>
                                     <div>
                                         <img :src="ex.thumbnail" alt="" class="w-[188px] h-[240px] object-cover object-top">
                                     </div>
-                                </div>
                                     <div>
                                         <div>
                                             <h2 class="text-[16px] text-start text-[#484848] font-bold mt-1">{{ ex.title }}</h2>                                       
@@ -52,6 +52,7 @@ function krg() {
                                         </div>
                                     </div>
                                 </div> 
+                              </div>
     <div class="mb-4 ml-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Nama Pemesan
@@ -87,6 +88,7 @@ function krg() {
       </button>
     </div>
     </div>
+  </div>
   </form>    
   </div>
     </section>   

@@ -4,21 +4,38 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
 </script>
 
 <template>
-    <section class="my-[88px] mx-[80px]">
+    <section class="my-[88px]">
       <div>
         <NuxtLink onclick="window.history.go(-1); return false;">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[80px]">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[40px] mt-2">
                 Kembali
                 </button>
             </NuxtLink>
-                                <div class="grid grid-cols-3 gap-5 gap-y-8">
-                                    <div v-for="(image, index) in ex.images" :key="index">
-                                        <img :src="image" class="object-cover object-top hover:scale-110 duration-1000 flex h-[200px] w-[350px] rounded">
-                                    </div>
-                                </div>
-                                <div>
+            <div class="grid lg:grid-cols-2 sm:grid-cols-1 content-start">
+                <Swiper class="groupSwiper w-[492px] h-[450px]"
+                    :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
+                    :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
+                        watchState: true,
+                    }" 
+                    :pagination="{ clickable: true }" :creative-effect="{
+                        prev: {
+                            shadow: false,
+                            translate: ['-100%', 0, -1],
+                        },
+                        next: {
+                            translate: ['100%', 0, 0],
+                        },
+                    }"
+                    >
+                    <SwiperSlide v-for="image in ex.images" class="">
+                        <NuxtLink :to="'/list/' + ex.id">
+                            <img :src="image" alt="" class="w-[492px] h-[450px] object-cover aspect-square duration-1000 rounded-lg">
+                        </NuxtLink>
+                    </SwiperSlide>
+                    </Swiper>
+                                <div class="ml-4 w-[853px]">
                                         <div>
-                                            <h2 class="text-6xl text-start text-[#484848] font-bold mt-5">{{ ex.title }}</h2>                                       
+                                            <h2 class="text-6xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
                                         <div>
                                             <h4 class="text-xl text-start text-[#767676] font-bold uppercase mt-[8px]">{{ ex.description }}</h4>
@@ -35,12 +52,29 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         <p class="text-4xl text-start text-[#484848] font-bold">Brand : {{ ex.brand }}</p>
                                         <p class="text-4xl text-start text-[#484848] font-bold">Category : {{ ex.category }}</p>
                                         </div>
+                                        <NuxtLink :to="'co/' + ex.id">
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 my-[40px]">
+                                            Beli
+                                            </button>
+                                        </NuxtLink>
                                     </div>  
                         </div>
-            <NuxtLink :to="'co/' + ex.id">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 my-[80px]">
-                Beli
-                </button>
-            </NuxtLink>
+                        <p class="text-4xl text-start text-[#484848] font-bold mt-2">Description</p>
+                        <div class="w-25">                            
+Processor :  Snapdragon 695 5G
+RAM : 8 GB + 8 GB Extended RAM
+ROM : 128 GB/256 GB
+Network : 5G
+Cooling System : 5-Layer Liquid Cooling System
+Battery : 6000 mAH
+Charging : 80 W Flash Charge
+Rear Camera : 50+2 MP Ultra Clarity Camera
+Front Camera : 8 MP
+Display Size : 6.64"
+Screen : IPS LCD
+Refresh Rate : 120Hz
+NFC : Yes
+</div>
+                    </div>
     </section>   
     </template>

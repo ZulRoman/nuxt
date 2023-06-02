@@ -1,6 +1,6 @@
 <template>  
 <Navbar />
-<div class="flex justify-center">
+<div class="w-full sm:px-10 px-2">
         <slot />
       </div>
  <Footer />

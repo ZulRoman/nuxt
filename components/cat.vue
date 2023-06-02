@@ -1,26 +1,19 @@
 <script setup>
-const { data: data } = await useFetch('https://dummyjson.com/products/categories')
+const { data: ex } = await useFetch('https://dummyjson.com/products/categories')
 </script>
-
 <template>
-    <div>
-        <div class="flex justify-center mb-2 mt-[88px] text-4xl font-bold">
-            <h1>Product Categories</h1>
-        </div>
-    <div class="mx-[80px] bg-gray-900 text-white max-w-[900px]">
-        <div class="flex justify-center">
-            <div class="flex gap-2 mx-2 overflow-x-scroll" >
-                <div class="flex flex-col w-[109px] justify-center items-center h-14 hover:cursor-pointer hover:scale-110 duration-1000 my-4"
-                    v-for="category in data">
-                    <NuxtLink :to="'/list/categories/' + category" class="flex flex-col bg-blue-500 justify-center items-center text-white px-2 py-2 h-[56px]">
-                        <span class="text-sm">{{ category.toLowerCase().split('-').join(' ') }}</span>
-                    </NuxtLink>
-                </div>
-            </div>
-        </div>
+    <div class="mt-[88px]">
+        <p class="flex justify-center text-4xl font-bold">Product Categories</p>
     </div>
+    <div class="flex flex-col gap-5 mt-8 text-slate-700 justify-center">
+        <div class="flex justify-start gap-6 overflow-x-auto py-2">
+            <NuxtLink :to="'/list/categories/' + category"
+                class="border bg-white h-20 flex items-center min-w-[175px] rounded-xl hover:shadow hover:cursor-pointer hover:scale-110 duration-1000 active:bg-black"
+                v-for="category in ex">
+                        <div class="flex mx-6 overflow-x-auto">
+                            {{ category.toUpperCase().split('-').join(' ') }}
+                        </div>
+            </NuxtLink>
+        </div>
     </div>
 </template>
-
-<script>
-</script>

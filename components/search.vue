@@ -45,7 +45,7 @@
                         </div>
                     </label>
                     <div class="flex flex-col w-full max-h-[600px]" v-for="product in productData.products" :key="product.id">
-                            <NuxtLink :to="'list/' + product.id">
+                            <NuxtLink :to="'/list/' + product.id">
                                 <div class="flex items-center w-full border-b px-2 py-2 hover:cursor-pointer hover:scale-110 duration-1000 rounded mt-2"
                                     id="list">
                                     <img :src="product.thumbnail" alt="" class="h-[40px] w-[70px]">

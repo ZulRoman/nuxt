@@ -1,22 +1,40 @@
 <script setup>
 const { data: ex } = await useFetch('https://dummyjson.com/products')
-const { data: ec } = await useFetch('https://dummyjson.com/products/categories?limit=6')
 </script>
 
 <template>
     <section class="my-[88px]">
         <Cat/>
-      <div class="mx-[80px] my-[88px]">
+      <div class="my-[88px]">
         <div class="flex justify-center mb-4 mt-[44px] text-4xl font-bold">
             <h1>Product Lists</h1>
         </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-8">
+                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-3 gap-y-8">
                         <div class="bg-white w-[188px] h-full hover:scale-110 duration-1000" v-for="item in ex.products" :key="item.id">
                             <NuxtLink :to="'list/' + item.id">
                                 <div>
-                                    <div>
-                                        <img :src="item.thumbnail" alt="" class="w-[188px] h-[240px] object-cover object-top">
-                                    </div>
+                                    <Swiper 
+                    class="groupSwiper"
+                    :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
+                    :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
+                        watchState: true,
+                    }" 
+                    :pagination="{ clickable: true }" :creative-effect="{
+                        prev: {
+                            shadow: false,
+                            translate: ['-100%', 0, -1],
+                        },
+                        next: {
+                            translate: ['100%', 0, 0],
+                        },
+                    }"
+                    >
+                    <SwiperSlide v-for="image in item.images">
+                        <NuxtLink :to="'/list/' + item.id">
+                            <img :src="image" alt="" class="w-full h-56 object-cover aspect-square duration-1000 rounded-lg">
+                        </NuxtLink>
+                    </SwiperSlide>
+                    </Swiper>
                                     <div>
                                         <div>
                                             <h2 class="text-[16px] text-start text-[#484848] font-bold mt-1">{{ item.title }}</h2>                                       </div>
