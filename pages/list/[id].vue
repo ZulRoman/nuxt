@@ -35,7 +35,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="w-[450px] h-[450px] px-2">
+                                <div class="w-[450px] h-[450px] px-2 z-20">
                                         <div>
                                             <h2 class="text-4xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
@@ -57,11 +57,11 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         <div class="flex mt-5 duration-1000">
                                     </div>
                                         <NuxtLink :to="'co/' + ex.id">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 my-[40px]">
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px]">
                                             Beli
                                             </button>
                                         </NuxtLink>
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 my-[40px] mx-[40px]" @click="addToCart(id, stockCounter), toggleAddcartStatus = true">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px] mx-[40px]" @click="addToCart(id, stockCounter), toggleAddcartStatus = true">
                                                 <div class="flex">
                                                     + Keranjang
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1 ml-1">
@@ -70,7 +70,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                                 </div>
                                             </button>
 
-                <div class="flex flex-col justify-between w-[400px] h-20 rounded-lg p-4 bg-white z-20 shadow-lg" v-show="toggleAddcartStatus">
+                <div class="flex flex-col justify-between w-[400px] h-20 rounded-lg p-4 bg-white z-20 shadow-lg mt-2" v-show="toggleAddcartStatus">
                     <div class="flex justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="toggleAddcartStatus = false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -89,9 +89,9 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
             </div>
                                     </div>  
                         </div>
-                        <div class="px-2">
+                        <div class="px-2 z-0">
                         <p class="text-2xl text-start text-[#484848] font-bold mt-4">Description</p>
-                        <div class="w-25">                            
+                        <div class="w-25 z-0">                            
 Processor :  Snapdragon 695 5G
 RAM : 8 GB + 8 GB Extended RAM
 ROM : 128 GB/256 GB

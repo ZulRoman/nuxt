@@ -26,7 +26,7 @@
                     <div class="flex flex-col py-2" v-for="cartProduct in cartData">
                         <div class="flex">
                             <div class="flex">
-                                <img :src="cartProduct.thumbnail" alt="" class="h-20 object-cover aspect-square mx-1">
+                                <img :src="cartProduct.thumbnail" alt="" class="h-[128px] object-cover aspect-square mx-1">
                                 <div class="flex flex-col mx-6">
                                     <div class="flex w-full justify-between">
                                         <NuxtLink :to="'/detail/'+cartProduct.id">
@@ -40,10 +40,13 @@
                                         <!-- <span class="flex items-center h-8 border shadow-lg hover:scale-105 active:scale-95 cursor-pointer rounded-tl-lg text-xl text-center px-4" @click="accumulateStock(1, stock)">-</span> -->
                                         <input type="number" id="qty" class="text-slate-800 font-semibold text-center px-4 w-20" v-model="cartProduct.qty"/>
                                         <!-- <span class="flex items-center h-8 border shadow-lg hover:scale-105 active:scale-95 cursor-pointer rounded-tr-lg text-xl text-center px-4" @click="accumulateStock(-1, stock)">+</span> -->
-                                        <div class="flex">
-                                <span class="text-rose-900 font-semibold cursor-pointer hover:text-rose-700 active:scale-95 duration-100 ml-2" @click="delete1(cartProduct.id)">Delete</span>
-                            </div>
                                     </div>
+                                    <div class="flex items-center">
+                                        <span class="font-semibold">Total : ${{ cartProduct.price*cartProduct.qty }}</span>
+                                    </div>
+                                    <div class="flex">
+                                <span class="text-white bg-rose-500 rounded px-1 py-1 font-semibold cursor-pointer hover:text-rose-800 active:scale-95 duration-100" @click="delete1(cartProduct.id)">Delete</span>
+                            </div>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +54,39 @@
                 </div>
             </div>
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mb-[40px]" v-show="cartData.length > 0">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4" v-show="cartData.length > 0" @click="toggleAddcartStatus = true">
                 Check Out
                 </button>
         </section>
+
+        <!-- <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen"
+                v-show="toggleAddcartStatus">
+                <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[10]"
+                    @click="toggleAddcartStatus = false"></div>
+                <div class="flex flex-col justify-between w-[400px] h-64 rounded-lg p-4 bg-white z-[20] shadow-lg">
+                    <div class="flex justify-end">
+                        <img src="/svg/close.svg" alt="" class="h-6 cursor-pointer hover:scale-105 active:scale-95"
+                            @click="toggleAddcartStatus = false">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer" @click="toggleAddcartStatus = false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                    </div>
+                    <div class="flex justify-center text-lg">
+                        <div class="flex items-center flex-col">
+                            Product Berhasil Ditambahkan
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <div class="flex">
+                            <div class="text-rose-500 hover:scale-105 active:scale-95 font-medium cursor-pointer">
+                                <NuxtLink to="/list/cart">
+                                    Go to cart
+                                </NuxtLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 </template>
 
 <script>
@@ -67,7 +99,8 @@ export default {
             },
             noteStatus: false,
             cartData: [],
-            allSubTotal: 0
+            allSubTotal: 0,
+            toggleAddcartStatus: false
         }
     },
     methods: {
