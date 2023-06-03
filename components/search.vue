@@ -4,13 +4,13 @@
                     gap-2 lg:ml-5 px-5 py-1 text-sm border border-gray-300
                     hover:shadow hover:cursor-pointer w-fit hidden font-normal mx-[80px]" @click="toggleSearch = !toggleSearch, filterData(),keyWord = ''">
         <a class="text-white">Search Here</a>
-        <span class="bg-red-bnb px-2 py-1 rounded-full">
+        <span class="px-2 py-1 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
 </svg>
         </span>
     </label>
-    <!-- searchbar mobile -->
+    <!-- mobile responsive -->
     <label for="searchInput"
         class="sm:hidden flex items-center justify-between border border-gray-300 w-full p-1 text-small font-normal hover:cursor-pointer"
         @click="toggleSearch = !toggleSearch, filterData(), keyWord = ''">
@@ -42,7 +42,7 @@
                                     placeholder="Search Here..." v-model="keyWord"
                                     @keyup="filterData()">
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 sm:hidden hover:cursor-pointer" @click="toggleSearch = !toggleSearch, keyWord = ''">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 sm:hidden hover:cursor-pointer" @click="toggleSearch = !toggleSearch">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
