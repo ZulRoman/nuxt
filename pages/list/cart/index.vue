@@ -9,7 +9,7 @@
         <div class="flex sm:justify-between gap-10 justify-center h-fit w-full mt-4 px-2 duration-1000 ">
             <div class="flex flex-col w-full h-fit duration-1000">
                 <div class="flex justify-between items-center duration-1000">
-                    <h1 class="text-2xl font-semibold">My cart</h1>
+                    <h1 class="text-2xl font-semibold">Keranjang Saya</h1>
                     <h1 class="text-xl text-white bg-rose-500 rounded px-2 py-2 font-semibold cursor-pointer hover:text-rose-800 active:scale-95 duration-100" @click="deleteall()">Delete All</h1>
                 </div>
                 <div class="flex flex-col justify-center items-center h-80 text-xl text-gray-600" v-show="cartData.length === 0">
