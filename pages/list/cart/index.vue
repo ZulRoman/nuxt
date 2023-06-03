@@ -38,8 +38,9 @@
                                     </div>
                                     <div class="flex items-center">
                                         <!-- <span class="flex items-center h-8 border shadow-lg hover:scale-105 active:scale-95 cursor-pointer rounded-tl-lg text-xl text-center px-4" @click="accumulateStock(1, stock)">-</span> -->
-                                        <input type="number" id="qty" class="text-slate-800 font-semibold text-center px-4 w-20" v-model="cartProduct.qty"/>
+                                        <input type="number" id="qty" class="text-slate-800 font-semibold text-center px-4 w-20" v-model="cartProduct.qty" min="1" :max="cartProduct.stock"/>
                                         <!-- <span class="flex items-center h-8 border shadow-lg hover:scale-105 active:scale-95 cursor-pointer rounded-tr-lg text-xl text-center px-4" @click="accumulateStock(-1, stock)">+</span> -->
+                                        <span class="font-semibold ml-2">Stock : {{ cartProduct.stock-cartProduct.qty }}</span>
                                     </div>
                                     <div class="flex items-center">
                                         <span class="font-semibold">Total : ${{ cartProduct.price*cartProduct.qty }}</span>
