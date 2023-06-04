@@ -14,7 +14,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
             </NuxtLink>
 
             <div class="flex lg:flex-row flex-col gap-y-2">
-                <Swiper class="groupSwiper w-[400px] h-[400px] z-0 lg:scale-100 scale-85"
+                <Swiper class="groupSwiper w-[400px] h-[400px] z-0 lg:scale-100 scale-90"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
