@@ -14,7 +14,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
             </NuxtLink>
 
             <div class="flex lg:flex-row flex-col gap-y-2 justify-start">
-                <Swiper class="groupSwiper w-[450px] h-[450px] z-0"
+                <Swiper class="groupSwiper w-[400px] h-[400px] z-0"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
@@ -35,7 +35,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="w-[450px] h-[450px] px-2 z-20">
+                                <div class="w-[400px] h-[400px] px-2 z-20">
                                         <div>
                                             <h2 class="text-4xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
