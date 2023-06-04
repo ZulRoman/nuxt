@@ -14,7 +14,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
             </NuxtLink>
 
             <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-y-3">
-                <Swiper class="groupSwiper w-[400px] h-[400px] z-0"
+                <Swiper class="groupSwiper w-[350px] h-[350px] z-0"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
@@ -31,7 +31,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                     >
                     <SwiperSlide v-for="image in ex.images" class="z-0">
                         <NuxtLink :to="'/list/' + ex.id">
-                            <img :src="image" alt="" class="w-[400px] h-[400px] object-cover aspect-square duration-1000 rounded-lg z-0">
+                            <img :src="image" alt="" class=" object-cover aspect-square duration-1000 rounded-lg z-0">
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
