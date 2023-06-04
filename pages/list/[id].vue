@@ -45,7 +45,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         <p class="text-2xl text-start text-[#484848] font-bold">Price : ${{ ex.price }}</p>
                                         <div class="flex gap-1 w-full font-bold mt-[8px]">
                                             <p class="text-2xl text-start text-[#484848]"> Rating : {{ ex.rating }}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" class="w-[36px] h-[36px] mt-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="blue" class="w-[30px] h-[30px]">
       <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
     </svg>
                                         </div>
@@ -56,7 +56,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         </div>
                                         <div class="flex mt-5 duration-1000">
                                     </div>
-                                        <NuxtLink :to="'co/' + ex.id">
+                                        <NuxtLink :to="'/co/' + ex.id">
                                             <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px]">
                                             Beli
                                             </button>
@@ -114,28 +114,6 @@ NFC : Yes
 
 <script>
 export default {
-    props: {
-        id: {
-            type: Number,
-            default: 0
-        },
-        title: {
-            type: String,
-            default: ""
-        },
-        price: {
-            type: Number,
-            default: 0
-        },
-        stock: {
-            type: Number,
-            default: 0
-        },
-        rating: {
-            type: Number,
-            default: 0
-        },
-    },
     data() {
         return {
             stockCounter: 1,
