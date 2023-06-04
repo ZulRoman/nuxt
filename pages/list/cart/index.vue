@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        <Transition>
+    <Transition>
         <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
             v-show="Delete1 === true">
             <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
@@ -105,7 +105,7 @@
                 </button>
         </section>
 
-        <Transition>
+    <Transition>
         <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
             v-show="DeleteAll === true">
             <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
@@ -203,9 +203,32 @@
                         <p class="text-slate-600 font-bold">Total Yang Harus Dibayar : ${{ (allPrice) }}</p>
                 </div>
                 <div class="flex justify-end">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4" @click="Thx = true">
                         Pesan
                         </button>
+                </div>
+            </div>
+        </div>
+    </Transition>
+
+        <Transition>
+        <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
+            v-show="Thx === true">
+            <NuxtLink to="/list">
+            <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
+                @click="Thx = false, deleteAll()"></div></NuxtLink>
+            <div class="flex flex-col justify-between w-[400px] h-32 rounded-lg p-4 bg-white z-[2]">
+                <div class="flex justify-end">
+                    <NuxtLink to="/list">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="Thx = false, Sum = false, deleteAll()">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </NuxtLink>
+                </div>
+                <div class="flex flex-col justify-center items-center text-lg mb-8">
+                    <div class="flex flex-col mx-8">
+                        Terimakasih Telah Berbelanja!
+                    </div>
                 </div>
             </div>
         </div>
@@ -221,7 +244,8 @@ export default {
             allQty: 0,
             Delete1: false,
             DeleteAll: false,
-            Sum : false
+            Sum : false,
+            Thx : false,
         }
     },
     methods: {

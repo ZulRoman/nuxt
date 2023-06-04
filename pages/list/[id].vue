@@ -56,7 +56,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         </div>
                                         <div class="flex mt-5 duration-1000">
                                     </div>
-                                        <NuxtLink :to="'/co/' + ex.id">
+                                        <NuxtLink :to="'co/' + ex.id">
                                             <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px]">
                                             Beli
                                             </button>
