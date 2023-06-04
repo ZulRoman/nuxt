@@ -13,8 +13,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 </button>
             </NuxtLink>
 
-            <div class="flex lg:flex-row flex-col gap-y-2 justify-start">
-                <Swiper class="groupSwiper w-[400px] h-[400px] z-0"
+            <div class="flex lg:flex-row flex-col gap-y-2">
+                <Swiper class="groupSwiper w-[400px] h-[400px] z-0 lg:scale-100 scale-85"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
@@ -35,7 +35,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="w-[400px] h-[400px] px-2 z-20">
+                                <div class="px-2 z-20">
                                         <div>
                                             <h2 class="text-4xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
@@ -45,7 +45,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                         <p class="text-2xl text-start text-[#484848] font-bold">Price : ${{ ex.price }}</p>
                                         <div class="flex gap-1 w-full font-bold mt-[8px]">
                                             <p class="text-2xl text-start text-[#484848]"> Rating : {{ ex.rating }}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="blue" class="w-[30px] h-[30px]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="blue" class="w-[25px] h-[25px] mt-1">
       <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
     </svg>
                                         </div>
