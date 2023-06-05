@@ -1,5 +1,5 @@
 <template>
-        <nav class="absolute flex flex-row items-center justify-between py-5 px-8 w-full mb-8 top-0 bg-slate-800">           
+        <nav class="absolute flex flex-row items-center justify-between py-5 px-8 w-full mb-8 top-0 bg-slate-800 w-screen">           
             <img src="/img/lg.png" class="w-6.5 h-7" alt="">
             <div class="flex">
             <NuxtLink to="/login" class="text white bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mx-1" v-show="auth==false">Login</NuxtLink>
