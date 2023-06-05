@@ -89,7 +89,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                                             </button>
                                         </div>
                 </div>
-                <div class="flex flex-col justify-between w-[400px] h-20 rounded-lg p-4 bg-white z-20 shadow-lg mt-2" v-show="toggleAddcartStatus">
+                <div class="flex flex-col justify-between w-fit h-20 rounded-lg p-4 bg-white z-20 shadow-lg mt-2" v-show="toggleAddcartStatus">
                     <div class="flex justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="toggleAddcartStatus = false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
