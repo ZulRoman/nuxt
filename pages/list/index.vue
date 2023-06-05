@@ -3,8 +3,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products')
 </script>
 
 <template>
+      <Cat/>
     <section class="my-[88px]">
-        <Cat/>
       <div class="my-[44px]">
         <div class="flex justify-center text-4xl font-bold mb-4">
             <h1>Product Lists</h1>

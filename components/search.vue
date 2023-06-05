@@ -1,7 +1,7 @@
 
 <template>
     <label for="searchInput" class="sm:flex flex-row justify-center items-center 
-                    gap-2 lg:ml-5 px-5 py-1 text-sm border border-gray-300
+                    gap-2 lg:ml-5 px-5 py-1 text-sm border border-gray-300 rounded-lg
                     hover:shadow hover:cursor-pointer w-fit hidden font-normal mx-[80px]" @click="toggleSearch = !toggleSearch, filterData(),keyWord = ''">
         <a class="text-white">Search Here</a>
         <span class="px-2 py-1 rounded-full">
@@ -24,7 +24,7 @@
         </div>
     </label>
     <Transition>
-        <div class="flex h-screen w-screen absolute top-0 sm:left-10 left-0 cursor-default" v-show="toggleSearch">
+        <div class="flex h-screen w-screen absolute top-0 sm:left-10 lg:left-0 cursor-default" v-show="toggleSearch">
             <div class="absolute h-screen w-screen z-[1]" @click="toggleSearch = !toggleSearch, keyWord = ''"></div>
             <div class="relative flex bg-gray-900 h-fit sm:w-[400px] w-full py-3 px-2 lg:left-[162px] sm:left-[90px] left-0 sm:mx-0 mx-2 top-[5px] rounded-xl z-[99]">
                 <div class="flex flex-col w-full overflow-y-auto">

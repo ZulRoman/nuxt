@@ -4,8 +4,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/category/' +
 </script>
 
 <template>
+      <Cat/>
     <section class="my-[88px]">
-  <Cat/>
       <div class="my-[44px]">
         <NuxtLink to="/list">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 mb-[40px]">
