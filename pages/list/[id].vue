@@ -13,8 +13,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 </button>
             </NuxtLink>
 
-            <div class="flex lg:flex-row flex-col gap-y-2">
-                <Swiper class="groupSwiper w-[400px] h-[400px] z-0 lg:scale-100 scale-90"
+            <div class="flex lg:flex-col flex-col gap-y-2">
+                <Swiper class="groupSwiper lg:w-[400px] lg:h-[400px] w-[360px] h-[360px] px-10"
                     :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
                     :slides-per-view="1" :loop="false" :effect="'creative'" :navigation="true" :hashNavigation="{
                         watchState: true,
@@ -35,7 +35,8 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-                                <div class="px-2 z-20">
+                                <div class="px-2 z-20 flex lg:flex-row flex-col">
+                                    <div>
                                         <div>
                                             <h2 class="text-4xl text-start text-[#484848] font-bold">{{ ex.title }}</h2>                                       
                                         </div>
@@ -50,26 +51,44 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
     </svg>
                                         </div>
                                         <div>
-                                        <p class="text-2xl text-start text-[#484848] font-bold">Stock : {{ ex.stock }}</p>
+                                        <p class="text-2xl text-start text-[#484848] font-bold">Stock : {{ ex.stock-stockCounter }}</p>
                                         <p class="text-2xl text-start text-[#484848] font-bold">Brand : {{ ex.brand }}</p>
                                         <p class="text-2xl text-start text-[#484848] font-bold">Category : {{ ex.category }}</p>
                                         </div>
                                         <div class="flex mt-5 duration-1000">
                                     </div>
-                                        <NuxtLink :to="'co/' + ex.id">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px]">
+                                </div>
+                                    <div class="mt-4 ml-4 rounded-lg shadow-lg">    
+                                    <div class="flex justify-between w-full h-[64px] rounded-lg mt-4">
+                    <div class="flex justify-center shadow-lg hover:shadow-xl items-center h-full flex-col w-full hover:scale-105 rounded-tl-lg hover:cursor-pointer"
+                        @click="accumulateStock(-1, ex.stock)">
+                        <h1 class="text-[25px] text-left font-bold">-</h1>
+                    </div>
+                    <input type="number"
+                        class="flex text-lg py-5 text-center justify-center items-center h-full flex-col w-full"
+                        v-model="stockCounter" :on-keyup="accumulateStock(0, ex.stock)" />
+                    <div class="flex justify-center shadow-lg items-center h-full flex-col w-full hover:scale-105 rounded-tr-lg hover:cursor-pointer"
+                        @click="accumulateStock(1, ex.stock)">
+                        <h1 class="text-[20px] text-left font-bold">+</h1>
+                    </div>
+                </div>
+                <div>
+                                            <div>
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px] w-full rounded-lg" @click="Sum = true">
                                             Beli
                                             </button>
-                                        </NuxtLink>
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 mt-[40px] mx-[40px]" @click="addToCart(id, stockCounter), toggleAddcartStatus = true">
-                                                <div class="flex">
+                                            </div>
+                                            <div>
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 w-full mt-2 rounded-lg" @click="addToCart(id, stockCounter), toggleAddcartStatus = true">
+                                                <div class="flex justify-center">
                                                     + Keranjang
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mt-1 ml-1">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                             </svg>
                                                 </div>
                                             </button>
-
+                                        </div>
+                </div>
                 <div class="flex flex-col justify-between w-[400px] h-20 rounded-lg p-4 bg-white z-20 shadow-lg mt-2" v-show="toggleAddcartStatus">
                     <div class="flex justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="toggleAddcartStatus = false">
@@ -87,6 +106,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                     </div>
                     </div>
             </div>
+        </div>
                                     </div>  
                         </div>
                         <div class="px-2 z-0">
@@ -109,6 +129,102 @@ NFC : Yes
 </div>
                     </div>
     </section>   
+    <Transition>
+        <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
+            v-show="Sum === true">
+            <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
+                @click="Sum = false"></div>
+            <div class="flex flex-col justify-between w-[400px] h-[650px] rounded-lg p-4 bg-white z-[2]">
+                <div class="flex justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="Sum = false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                </div>
+                <div class="flex justify-center">
+                        <p class="font-bold text-xl">Summary</p>
+                </div>
+                <div class="overflow-y-scroll">
+                    <div class="flex flex-col mt-6 mb-8 duration-1000">
+                        <div class="flex justify-center">
+                        <p class="font-bold">Item Yang Dipilih</p>
+                </div>
+                <div class="flex flex-col py-2">
+                    <div class="flex">
+                        <div class="flex">
+                            <img :src="ex.thumbnail" alt="" class="h-[128px] object-cover aspect-square mx-1">
+                            <div class="flex flex-col mx-6">
+                                <div class="flex w-full justify-between">
+                                    <NuxtLink :to="'/detail/'+ex.id">
+                                        <h2 class="active:scale-95 duration-300">{{ ex.title }}</h2>
+                                    </NuxtLink>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold">${{ ex.price }}</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold">Qty : <input type="number" id="qty" class="text-slate-800 font-semibold text-center px-4 w-20" :value="stockCounter" disabled/></span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-bold">Total : ${{ ex.price*stockCounter }}</span>
+                                </div>
+                                <div class="flex">
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <label class="block text-gray-700 text-sm font-bold mb-2">
+        Nama Pemesan
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama">
+      <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">
+        Metode Pembayaran
+      </label>
+      <select name="" id="" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <option>-- PILIH --</option>
+        <option>Cash On Delivery (COD)</option>
+        <option>Transfer</option>
+      </select>
+      <label class="block text-gray-700 text-sm font-bold mb-2 mt-2">
+        Alamat
+      </label>
+      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Alamat" cols="15" rows="15"></textarea>
+    </div>
+                <div class="flex justify-center mb-2">
+                        <p class="text-slate-600 font-bold">Total Yang Harus Dibayar : ${{ ex.price*stockCounter }}</p>
+                </div>
+                <div class="flex justify-end">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4" @click="Thx = true">
+                        Pesan
+                        </button>
+                </div>
+            </div>
+        </div>
+    </Transition>
+
+    <Transition>
+        <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
+            v-show="Thx === true">
+            <NuxtLink to="/list">
+            <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
+                @click="Thx = false"></div></NuxtLink>
+            <div class="flex flex-col justify-between w-[400px] h-32 rounded-lg p-4 bg-white z-[2]">
+                <div class="flex justify-end">
+                    <NuxtLink to="/list">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="Thx = false, Sum = false, deleteAll()">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </NuxtLink>
+                </div>
+                <div class="flex flex-col justify-center items-center text-lg mb-8">
+                    <div class="flex flex-col mx-8">
+                        Terimakasih Telah Berbelanja!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Transition>
 </template>
 
 
@@ -117,7 +233,9 @@ export default {
     data() {
         return {
             stockCounter: 1,
-            toggleAddcartStatus: false
+            toggleAddcartStatus: false,
+            Sum: false,
+            Thx: false
         }
     },
     methods: {
@@ -195,6 +313,13 @@ export default {
             }
         }
     },
+    checkOut() {
+            if ( localStorage.getItem('user') ) {
+                this.Sum = true;
+            } else {
+                this.Login = true;
+            }
+        },
     mounted() {
 
     }

@@ -1,12 +1,11 @@
-
 <template>
-        <section class="my-[88px]">
-            <NuxtLink to="/list">
+<section class="my-[88px]">
+    <NuxtLink to="/list">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4">
                 Kembali
                 </button>
             </NuxtLink>
-        <div class="flex sm:justify-between gap-10 justify-center h-fit w-full mt-4 px-2 duration-1000 ">
+            <div class="flex sm:justify-between gap-10 justify-center h-fit w-full mt-4 px-2 duration-1000 ">
             <div class="flex flex-col w-full h-fit duration-1000">
                 <div class="flex justify-between items-center duration-1000">
                     <h1 class="text-2xl font-semibold">Keranjang Saya</h1>
@@ -23,7 +22,7 @@
                 </div>
                 </div>
                 <div class="flex flex-col mt-6 mb-8 duration-1000">
-                    <div class="flex flex-col py-2" v-for="cartProduct in cartData">
+                    <div class="flex flex-col py-2 rounded-lg shadow-lg" v-for="cartProduct in cartData">
                         <div class="flex">
                             <div class="flex">
                                 <NuxtLink :to="'/list/'+cartProduct.id">
@@ -99,12 +98,26 @@
                 </div>
             </div>
         </div>
-        <p class="text-slate-600 font-bold" v-show="cartData.length > 0">Total Harga : ${{ (allPrice) }}</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4" v-show="cartData.length > 0" @click="Sum = true">
-                Check Out
-                </button>
-        </section>
+        <div class="lg:flex justify-start w-full duration-1000" v-show="cartData.length > 0">
+                <div class="flex bg-white rounded-lg h-fit shadow-lg border w-96 sticky top-0 p-4 py-6">
+                    <div class="flex flex-col gap-6 w-full">
+                        <div class="flex w-full">
+                        </div>
+                        <div class="flex justify-between">
+                            <h1 class="text-xl font-semibold">Total price</h1>
+                            <h1 class="text-xl font-semibold">${{ (allPrice) }}</h1>
+                        </div>
+                        <button class="bg-blue-500 text-white font-bold rounded-lg text-xl py-4"
+                            :class="[allQty===0? 'bg-slate-300': '']"
+                            :disabled="allQty===0"
+                            @click="checkOut()">
+                            Check out ({{ allQty }})
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+    <!-- modal -->
     <Transition>
         <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
             v-show="DeleteAll === true">
@@ -130,6 +143,37 @@
                         <div class="text-slate-700 hover:scale-105 active:scale-95 font-medium cursor-pointer"
                             @click="deleteAll()">
                             Yes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Transition>
+
+    <Transition>
+        <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
+            v-show="Login === true">
+            <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
+                @click="Login = false"></div>
+            <div class="flex flex-col justify-between w-[400px] h-64 rounded-lg p-4 bg-white z-[2]">
+                <div class="flex justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6 hover:cursor-pointer mt-1" @click="Login = false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                </div>
+                <div class="flex flex-col justify-center items-center text-lg mb-8">
+                    <div class="flex flex-col mx-8">
+                        Anda Harus Login Terlebih Dahulu!
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <div class="flex gap-6">
+                        <div class="text-rose-500 hover:scale-105 active:scale-95 font-medium cursor-pointer"
+                            @click="Login = false">
+                            Batal
+                        </div>
+                        <div class="text-slate-700 hover:scale-105 active:scale-95 font-medium cursor-pointer">
+                            <NuxtLink to="/login">Login</NuxtLink> 
                         </div>
                     </div>
                 </div>
@@ -211,7 +255,7 @@
         </div>
     </Transition>
 
-        <Transition>
+    <Transition>
         <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
             v-show="Thx === true">
             <NuxtLink to="/list">
@@ -233,18 +277,24 @@
             </div>
         </div>
     </Transition>
+    </section>
 </template>
 
 <script>
 export default {
     data() {
         return {
+            layouts: {
+                header: "header",
+                container: "container"
+            },
             cartData: [],
             allPrice: 0,
             allQty: 0,
-            Delete1: false,
             DeleteAll: false,
-            Sum : false,
+            Delete1: false,
+            Sum: false,
+            Login: false,
             Thx : false,
         }
     },
@@ -266,7 +316,7 @@ export default {
             this.DeleteAll = false;
             this.getCartData();
         },
-        delete1(id) {
+        deleteSingleItem(id) {
             for (let i = 0; i < this.cartData.length; i++) {
                 if (this.cartData[i].id === id) {
                     this.cartData.splice(i, 1);
@@ -277,7 +327,6 @@ export default {
             this.getCartData();
         },
         accumulateQty(id, qty, stock) {
-            //get data with the same id
             for (let i = 0; i < this.cartData.length; i++) {
                 if (this.cartData[i].id === id) {
                     if (qty == 1) {
@@ -309,16 +358,25 @@ export default {
                 this.allPrice = 0;
                 this.allQty = 0;
                 for (let i = 0; i < this.cartData.length; i++) {
-                    //accumulate
+                    //then accumulate
                     this.allPrice += this.cartData[i].price * this.cartData[i].qty;
                     this.allQty += this.cartData[i].qty;
                     console.log(this.allPrice);
                 }
             } else {
+                this.allSubTotal = 0;
+                this.allDiscount = 0;
                 this.allPrice = 0;
                 this.allQty = 0;
                 console.log(this.allPrice);
                 console.log(this.allQty);
+            }
+        },
+        checkOut() {
+            if ( localStorage.getItem('user') ) {
+                this.Sum = true;
+            } else {
+                this.Login = true;
             }
         },
     },
