@@ -13,7 +13,6 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 </button>
             </NuxtLink>
             <div class="flex items-center px-2">
-            <img src="/svg/lang.svg" alt="" class="h-8 inline">
             <h1 class="text-xl font-semibold mx-2">{{ ex.title }}</h1>
             </div>
             <div class="flex justify-between items-center mt-2 text-small px-2">
