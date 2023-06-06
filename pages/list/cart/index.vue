@@ -316,7 +316,7 @@ export default {
             this.DeleteAll = false;
             this.getCartData();
         },
-        deleteSingleItem(id) {
+        delete1(id) {
             for (let i = 0; i < this.cartData.length; i++) {
                 if (this.cartData[i].id === id) {
                     this.cartData.splice(i, 1);

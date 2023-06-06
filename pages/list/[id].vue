@@ -308,12 +308,10 @@ export default {
             let { data: product }  = await useFetch('https://dummyjson.com/products/' + id);
             let dataProduct        = product._rawValue;
             dataProduct.qty        = qty;
-            dataProduct.noteStatus = false;
 
             if (!localStorage.getItem("products")) {
                 let array = [];
                 dataProduct.cartId = 1;
-                dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
                 array.push(dataProduct);
                 localStorage.setItem("products", JSON.stringify(array));
                 console.log(JSON.parse(localStorage.getItem("products")));
@@ -330,7 +328,6 @@ export default {
                 
                 if (!listProductId.includes(dataProduct.id)) {
                     dataProduct.cartId   = productAtCart.length + 1;
-                    dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
                     productAtCart.push(dataProduct);
                     localStorage.setItem("products", JSON.stringify(productAtCart));
                     console.log(JSON.parse(localStorage.getItem("products")));
@@ -338,7 +335,6 @@ export default {
                 } else {
                     for (let j = 0; j < productAtCart.length; j++) {
                         if (productAtCart[j].id === id) {
-                            productAtCart[j].subTotal += (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
                             productAtCart[j].qty      += qty;
                             localStorage.setItem("products", JSON.stringify(productAtCart));
                             console.log(JSON.parse(localStorage.getItem("products")));
