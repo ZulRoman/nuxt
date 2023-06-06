@@ -26,7 +26,7 @@ const { data: ex } = await useFetch('https://dummyjson.com/products/' + id)
                 <span class="underline">{{ ex.brand }}</span>
             </div>
         </div>
-            <div class="hidden lg:block">
+            <div class="hidden lg:block md:block">
             <Image :images="ex.images" :thumbnail="ex.thumbnail" /></div>
             <div class="flex lg:flex-col flex-col gap-y-2">
                 <div class="sm:hidden">
