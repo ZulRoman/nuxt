@@ -6,7 +6,7 @@
                     <img src="/svg/airbnb.svg" alt="AirBnBlogo" srcset="" class="h-8 lg:block hidden">
                 </NuxtLink>
                 <NuxtLink to="/">
-                    <img src="/svg/airbnb-1.svg" alt="AirBnBlogo" srcset="" class="h-10 lg:hidden sm:block hidden mr-2">
+                    <img src="/svg/airbnb-1.svg" alt="AirBnBlogo" srcset="" class="h-10 lg:hidden sm:block mr-2">
                 </NuxtLink>
                 <Search />
                 <Menu class="min-w-fit sm:hidden ml-3 text-small"/>
